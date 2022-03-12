@@ -1,0 +1,20 @@
+﻿<Window x:Class="CurselessModUtility.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CurselessModUtility"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown" FontFamily="Segoe UI Variable Text">
+    <Grid>
+        <ListView x:Name="listView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,115">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Url" DisplayMemberBinding="{Binding Url}"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
