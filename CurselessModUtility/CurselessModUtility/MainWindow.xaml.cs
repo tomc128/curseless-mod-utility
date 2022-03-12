@@ -42,10 +42,7 @@ namespace CurselessModUtility
 
         private void AddItemByURL(string url)
         {
-            var item = new ModListItem
-            {
-                Url = url
-            };
+            var item = new ModListItem(url);
 
             if (listView.Items.Contains(item)) return;
 

@@ -12,9 +12,13 @@ namespace CurselessModUtility.Models
         public string? Name { get; set; }
         public string? Id { get; set; }
 
-        public override bool Equals(object? obj)
+        public ModListItem(string url)
         {
-            return obj is ModListItem other && Url == other.Url;
+            Url = url;
         }
+
+        public override bool Equals(object? obj) => obj is ModListItem other && Url == other.Url;
+
+        public override int GetHashCode() => base.GetHashCode();
     }
 }
