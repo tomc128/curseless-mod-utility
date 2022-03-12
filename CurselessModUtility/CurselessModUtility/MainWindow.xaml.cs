@@ -1,6 +1,8 @@
-﻿using CurselessModUtility.Models;
+﻿using CurselessModUtility.Controllers;
+using CurselessModUtility.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,8 +26,16 @@ namespace CurselessModUtility
         public MainWindow()
         {
             InitializeComponent();
+            CurseForgeAPIController.Instance.Init();
 
-            Console.WriteLine("Start");
+            ((INotifyCollectionChanged)listView.Items).CollectionChanged += ListView_CollectionChanged;
+        }
+
+        private void ListView_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action != NotifyCollectionChangedAction.Add) return;
+
+            // API request to get mod info
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -47,6 +57,20 @@ namespace CurselessModUtility
             if (listView.Items.Contains(item)) return;
 
             listView.Items.Add(item);
+        }
+
+        private async Task Test()
+        {
+            var response = await CurseForgeAPIController.Instance.Request("/v1/minecraft/version");
+
+            Console.WriteLine(response);
+            Console.WriteLine(response.Content);
+
+        }
+
+        private async void testButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Test();
         }
     }
 }

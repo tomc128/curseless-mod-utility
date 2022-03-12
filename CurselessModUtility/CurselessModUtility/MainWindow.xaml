@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown" FontFamily="Segoe UI Variable Text">
     <Grid>
-        <ListView x:Name="listView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,115">
+        <ListView x:Name="listView" d:ItemsSource="{d:SampleData ItemCount=5}"  Margin="0,0,0,115">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Url" DisplayMemberBinding="{Binding Url}"/>
@@ -16,5 +16,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button x:Name="testButton" Content="Button" HorizontalAlignment="Left" Margin="29,341,0,0" VerticalAlignment="Top" Click="testButton_Click"/>
     </Grid>
 </Window>
